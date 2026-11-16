@@ -1,0 +1,55 @@
+NEON STRIKE 3D — GITHUB-READY ANDROID GAME (v1.1)
+
+THIS ZIP ALREADY INCLUDES EVERYTHING NEEDED FOR GITHUB'S APK BUILD WORKFLOW.
+No PKI workflow, manual YAML authoring, Android Studio, Gradle setup, or
+certificate creation is required on your computer for a test/debug APK.
+
+IMPORTANT: This ZIP is a source PROJECT, not an APK. GitHub Actions builds the APK.
+The APK build and gameplay have NOT been tested successfully on an Android phone.
+
+ONE-TIME GITHUB SETUP:
+1. Extract this ZIP on your computer.
+2. On github.com/new create a repo with default branch main.
+3. In your repo select "Add file" > "Upload files".
+4. Drag the CONTENTS of this extracted folder, not the folder itself,
+   into the GitHub upload area. Be sure .github/workflows/android-apk.yml is
+   uploaded too, maintaining the directories shown below.
+5. Commit the changes. This automatically triggers "Build Android APK".
+6. Go to Actions > Build Android APK > latest run. If Actions are disabled,
+   enable them. You can also click "Run workflow" manually.
+7. On a SUCCESSFUL run, download artifact "NeonStrike-Android-APK".
+   Extract that artifact ZIP and install "NeonStrike-debug.apk" on your
+   Android 64-bit (arm64) device.
+
+REPOSITORY ROOT SHOULD LOOK LIKE:
+ .github/workflows/android-apk.yml
+ assets/AK-74_pack.fbx
+ assets/soldier.glb
+ assets/drone.fbx
+ scripts/game.gd
+ project.godot
+ main.tscn
+ export_presets.cfg
+ icon.png
+ icon_192.png
+ icon_432.png
+ README.md
+ ASSET_NOTES.md
+ START_HERE_GITHUB.txt
+
+If GitHub shows a failed (red) build, open the failed job and copy its
+error messages. The workflow also uploads import/export logs when available.
+
+DEBUG SIGNING NOTE:
+The workflow creates a new debug signing key per run. If a new APK reports
+"App not installed" due to different signatures, uninstall the previous
+Neon Strike test APK first (this removes local app data).
+
+ASSETS AND LIMITATIONS:
+- This project includes the uploaded soldier GLB, AK-74 FBX, and drone FBX.
+- Other supplied MAX/RAR and very large assets are excluded from this mobile
+  prototype. See ASSET_NOTES.md for details.
+- FBX orientation, texturing, visuals, game balance and actual Android build
+  still need real device testing.
+- Only test/debug install APK is supported by this preset. Publishing on
+  Google Play requires a proper persistent release keystore and release build.
